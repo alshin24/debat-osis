@@ -48,14 +48,13 @@ export default function SetupPage({ onComplete, onCancel }: SetupPageProps) {
   return (
     <div className="min-h-screen p-6 md:p-8 bg-background">
       <div className="max-w-6xl mx-auto">
-
         <div className="flex justify-between items-center mb-2">
           <div>
-            <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-2">Debat Osis</h1>
-            <p className="text-muted-foreground">Pengaturan Debat</p>
+            <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-2">Debat OSIS</h1>
+            <p className="text-muted-foreground">Pengaturan Sesi Debat</p>
           </div>
           <Button variant="ghost" onClick={onCancel}>
-            ← Back
+            ← Kembali
           </Button>
         </div>
         <Separator className="mb-8" />
@@ -65,7 +64,7 @@ export default function SetupPage({ onComplete, onCancel }: SetupPageProps) {
             <Card className="p-6">
               <div className="flex items-center gap-2 mb-4">
                 <h2 className="text-xl font-bold text-foreground">Pilih Tema Debat</h2>
-                <Badge variant="outline">{selectedTheme ? "Selected" : "Required"}</Badge>
+                <Badge variant="outline">{selectedTheme ? "Dipilih" : "Wajib Dipilih"}</Badge>
               </div>
 
               <div className="space-y-2">
@@ -84,7 +83,7 @@ export default function SetupPage({ onComplete, onCancel }: SetupPageProps) {
 
             <Card className="p-6">
               <div className="flex items-center gap-2 mb-4">
-                <h2 className="text-xl font-bold text-foreground">Durasi</h2>
+                <h2 className="text-xl font-bold text-foreground">Atur Durasi</h2>
                 <Badge variant="secondary">
                   {Math.floor(duration / 60)}m {duration % 60}s
                 </Badge>
@@ -101,24 +100,23 @@ export default function SetupPage({ onComplete, onCancel }: SetupPageProps) {
                 }}
               />
               <div className="flex justify-between text-sm text-muted-foreground mt-3">
-                <span>Min: 1s</span>
-                <span>Max: ∞</span>
+                <span>Minimal: 1 detik</span>
+                <span>Maksimal: Tidak terbatas</span>
               </div>
             </Card>
           </div>
 
-
           <Card className="p-6">
             <div className="flex items-center gap-2 mb-2">
-              <h2 className="text-xl font-bold text-foreground">Select Candidates</h2>
+              <h2 className="text-xl font-bold text-foreground">Pilih Pasangan Calon</h2>
               <Badge variant="outline">{selectedCandidates.length}/6</Badge>
             </div>
-            <p className="text-sm text-muted-foreground mb-4">Choose 1-6 candidates to debate</p>
+            <p className="text-sm text-muted-foreground mb-4">Pilih 1 hingga 6 pasangan calon untuk debat</p>
 
             {selectedCandidates.length === 6 && (
               <Alert className="mb-4 bg-accent/10 border-accent">
                 <AlertCircle className="h-4 w-4" />
-                <AlertDescription>Maximum candidates selected</AlertDescription>
+                <AlertDescription>Maksimal 6 pasangan calon sudah dipilih</AlertDescription>
               </Alert>
             )}
 
@@ -141,10 +139,10 @@ export default function SetupPage({ onComplete, onCancel }: SetupPageProps) {
 
             <Separator className="mb-4" />
             <p className="text-sm text-muted-foreground mb-4">
-              Selected: <span className="font-bold text-foreground">{selectedCandidates.length}</span>
+              Terpilih: <span className="font-bold text-foreground">{selectedCandidates.length}</span>
             </p>
             <Button onClick={handleStart} disabled={selectedCandidates.length === 0} className="w-full">
-              Start Debate
+              Mulai Debat
             </Button>
           </Card>
         </div>

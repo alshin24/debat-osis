@@ -11,8 +11,8 @@ interface CandidateDisplayProps {
 export default function CandidateDisplay({ candidate }: CandidateDisplayProps) {
   return (
     <div>
-      <Card className="p-8 max-w-sm">
-
+      <Card className="p-6 max-w-sm ">
+        {/* foto kandidat */}
         <div className="mb-6 rounded-md overflow-hidden border border-border">
           <div className="relative w-full aspect-square">
             <Image
@@ -25,7 +25,7 @@ export default function CandidateDisplay({ candidate }: CandidateDisplayProps) {
           </div>
         </div>
 
-
+        {/* nama kandidat */}
         <div className="text-center">
           <p className="text-xs text-muted-foreground uppercase tracking-wider mb-2 font-semibold">{candidate.role}</p>
           <h3 className="text-2xl md:text-3xl font-bold text-foreground text-balance">{candidate.name}</h3>

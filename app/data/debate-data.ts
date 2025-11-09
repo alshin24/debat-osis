@@ -8,6 +8,7 @@ export interface Candidate {
 export interface DebateTheme {
   id: string
   theme: string
+  category?: string
   questions: string[]
 }
 
@@ -16,7 +17,7 @@ export const candidates: Candidate[] = [
     id: "1",
     name: "Muhammad Tamam Setiaji",
     role: "Ketua 01",
-    image: "/male-student-in-formal-attire.jpg",
+    image: "/tamam.png",
   },
   {
     id: "2",
@@ -53,7 +54,7 @@ export const candidates: Candidate[] = [
 export const debateThemes: DebateTheme[] = [
   {
     id: "1",
-    theme: "Disiplin & Kepemimpinan",
+    theme: "Tata Tertib",
     questions: [
       "Apakah OSIS wajib menjadi panutan moral bagi siswa lain? Apa tanggapanmu mengenai hal tersebut?",
       "Bagaimana OSIS meningkatkan kesadaran agar tata tertib dipahami sebagai kebutuhan, bukan beban?",
@@ -63,7 +64,7 @@ export const debateThemes: DebateTheme[] = [
   },
   {
     id: "2",
-    theme: "Kebersihan & Lingkungan",
+    theme: "Kebersihan",
     questions: [
       "Bagaimana menciptakan budaya saling menghargai usaha menjaga kebersihan?",
       "Langkah apa yang bisa diambil OSIS agar kesadaran menjaga kebersihan tumbuh dari diri siswa?",
@@ -74,7 +75,7 @@ export const debateThemes: DebateTheme[] = [
   },
   {
     id: "3",
-    theme: "Kesejahteraan & Sosial Siswa",
+    theme: "Organisasi",
     questions: [
       "Bagaimana langkah OSIS membantu menjembatani komunikasi antara guru dan siswa dengan tetap menjaga adab dan sopan santun?",
       "Bagaimana membuat kegiatan sosial OSIS lebih bermakna dan manfaatnya lebih nyata bagi masyarakat?",
@@ -85,7 +86,7 @@ export const debateThemes: DebateTheme[] = [
   },
   {
     id: "4",
-    theme: "Organisasi & Transparansi",
+    theme: "Sosial",
     questions: [
       "Bagaimana OSIS mengelola dana kegiatan agar tidak ada pemborosan, tetapi kegiatan tetap berjalan?",
       "Bagaimana kamu mempertanggungjawabkan keterlambatan proposal di depan siswa dan pembina OSIS?",
@@ -96,7 +97,7 @@ export const debateThemes: DebateTheme[] = [
   },
   {
     id: "5",
-    theme: "Hubungan Publik & Citra OSIS",
+    theme: "Administratif",
     questions: [
       "Apakah kerja sama dengan pihak luar yang menonjolkan logo sponsor mengancam independensi OSIS atau justru memperluas jejaring positif?",
       "Apa langkah konkret kalian untuk memperbaiki citra OSIS agar kembali dipercaya oleh siswa?",
