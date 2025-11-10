@@ -54,19 +54,19 @@ export default function DebateDisplayPage({
             </div>
             <div className="w-16 h-1 bg-border rounded-full"></div>
           </div> */}
-                    {/* <div className="flex items-center gap-4">
-            <div className="text-right">
+                     <div className="flex items-center gap-4">
+            {/* <div className="text-right">
               <p className="text-sm text-muted-foreground">Kandidat</p>
               <p className="text-2xl font-bold text-foreground">
                 {session.candidates.length}/{session.candidates.length}
               </p>
-            </div>
+            </div> */}
             {!isSessionComplete && (
-              <Button variant="ghost" onClick={onSessionEnd}>
+              <Button variant="ghost" onClick={onSessionEnd} className="z-10">
                 ← Kembali
               </Button>
             )}
-          </div> */}
+          </div> 
                 </div>
 
                 {isSessionComplete ? (
