@@ -4,11 +4,11 @@ import { useState } from "react"
 import HomePage from "@/components/home-page"
 import SetupPage from "@/components/setup-page"
 import DebateDisplayPage from "@/components/debate-display-page"
-import type { Candidate, DebateTheme } from "@/app/data/debate-data"
+import type { Candidate, DebateTheme, DebateQuestion } from "@/app/data/debate-data"
 
 export interface DebateSession {
   theme: DebateTheme
-  question: string
+  question: DebateQuestion
   candidates: Candidate[]
   duration: number
 }

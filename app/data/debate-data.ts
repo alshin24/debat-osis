@@ -5,11 +5,23 @@ export interface Candidate {
   image: string
 }
 
+export interface DebateQuestion {
+  no: number
+  soal: string
+  pertanyaan: string
+}
+
 export interface DebateTheme {
   id: string
   theme: string
-  category?: string
-  questions: string[]
+  questions: DebateQuestion[]
+}
+
+export interface DebateSession {
+  theme: DebateTheme
+  question: DebateQuestion
+  candidates: Candidate[]
+  duration: number
 }
 
 export const candidates: Candidate[] = [
@@ -17,37 +29,37 @@ export const candidates: Candidate[] = [
     id: "1",
     name: "Muhammad Tamam Setiaji",
     role: "Ketua 01",
-    image: "/tamam.png",
+    image: "/tamam2.png",
   },
   {
     id: "2",
     name: "Priyanka Janitra Almira",
     role: "Wakil 01",
-    image: "/female-student-in-formal-attire.jpg",
+    image: "/priyanka.png",
   },
   {
     id: "3",
     name: "Novrika Awaliyah",
     role: "Ketua 02",
-    image: "/male-student-debate-formal.jpg",
+    image: "/novrika.jpg",
   },
   {
     id: "4",
     name: "Syaakira Azzahra",
     role: "Wakil 02",
-    image: "/female-student-debate-formal.jpg",
+    image: "/syaakira.png",
   },
   {
     id: "5",
     name: "Matsurika Rosunul. F",
     role: "Ketua 03",
-    image: "/young-man-business-portrait.jpg",
+    image: "/matsurika.png",
   },
   {
     id: "6",
     name: "Muhammad Azka Adimaputra",
     role: "Wakil 03",
-    image: "/young-woman-business-portrait.jpg",
+    image: "/adimaputra.png",
   },
 ]
 
@@ -56,53 +68,156 @@ export const debateThemes: DebateTheme[] = [
     id: "1",
     theme: "Tata Tertib",
     questions: [
-      "Apakah OSIS wajib menjadi panutan moral bagi siswa lain? Apa tanggapanmu mengenai hal tersebut?",
-      "Bagaimana OSIS meningkatkan kesadaran agar tata tertib dipahami sebagai kebutuhan, bukan beban?",
-      "Bagaimana kalian menjaga keseimbangan antara disiplin dan kenyamanan siswa agar tata tertib tetap dijalankan dengan sukarela, bukan karena takut?",
-      "Sebagai ketua dan wakil ketua OSIS, apa langkah pertama yang akan kalian ambil untuk menyelesaikan konflik antar divisi tanpa mengorbankan kelancaran acara?",
+      {
+        no: 1,
+        soal: "Class meeting berlangsung kacau karena beberapa siswa berkelahi.",
+        pertanyaan: "Apa kebijakan yang tepat tanpa memperkeruh suasana?",
+      },
+      {
+        no: 2,
+        soal: "Setelah acara sekolah selesai lapangan penuh sampah, siswa langsung pulang.",
+        pertanyaan: "Langkah konkret apa yang bisa diterapkan untuk mencegah hal ini?",
+      },
+      {
+        no: 3,
+        soal: "Ada kelompok siswa yang mengejek teman karena dianggap 'kurang gaul'.",
+        pertanyaan: "Bagaimana menciptakan budaya saling menghargai?",
+      },
+      {
+        no: 4,
+        soal: "Beberapa siswa menganggap aturan sekolah terlalu ketat.",
+        pertanyaan: "Bagaimana meningkatkan kesadaran bahwa tata tertib adalah kebutuhan, bukan beban?",
+      },
+      {
+        no: 5,
+        soal: "Dalam pelanggaran seragam guru menyalahkan OSIS karena tidak menegur, OSIS merasa itu tugas guru.",
+        pertanyaan: "Siapa yang paling bertanggung jawab dalam menegakkan disiplin?",
+      },
     ],
   },
   {
     id: "2",
     theme: "Kebersihan",
     questions: [
-      "Bagaimana menciptakan budaya saling menghargai usaha menjaga kebersihan?",
-      "Langkah apa yang bisa diambil OSIS agar kesadaran menjaga kebersihan tumbuh dari diri siswa?",
-      "Bagaimana OSIS mendorong kemandirian siswa dalam hal kebersihan?",
-      "Bagaimana menanamkan kesadaran bahwa kebersihan adalah tanggung jawab bersama?",
-      "Bagaimana OSIS bisa mengubah kebiasaan agar siswa lebih bijak terhadap makanan dan tidak membuangnya sembarangan?",
+      {
+        no: 1,
+        soal: "Siswa yang rajin piket sering diejek 'sok rajin'.",
+        pertanyaan: "Bagaimana menciptakan budaya saling menghargai usaha menjaga kebersihan?",
+      },
+      {
+        no: 2,
+        soal: "Banyak siswa tetap membuang sampah sembarangan meski ada papan peringatan.",
+        pertanyaan: "Langkah apa yang bisa membuat kesadaran kebersihan tumbuh dari diri siswa?",
+      },
+      {
+        no: 3,
+        soal: "Sekolah terlalu bergantung pada petugas kebersihan.",
+        pertanyaan: "Bagaimana mendorong kemandirian siswa dalam menjaga kebersihan?",
+      },
+      {
+        no: 4,
+        soal: "Setelah acara halaman kotor tetapi semua saling menyalahkan dan tidak ada yang membersihkan.",
+        pertanyaan: "Bagaimana menanamkan bahwa kebersihan adalah tanggung jawab bersama?",
+      },
+      {
+        no: 5,
+        soal: "Banyak makanan sisa terbuang dari kantin dan program makanan gratis.",
+        pertanyaan: "Bagaimana OSIS mengubah kebiasaan agar siswa tidak menyia-nyiakan makanan?",
+      },
     ],
   },
   {
     id: "3",
     theme: "Organisasi",
     questions: [
-      "Bagaimana langkah OSIS membantu menjembatani komunikasi antara guru dan siswa dengan tetap menjaga adab dan sopan santun?",
-      "Bagaimana membuat kegiatan sosial OSIS lebih bermakna dan manfaatnya lebih nyata bagi masyarakat?",
-      "Bagaimana OSIS bisa menciptakan lingkungan yang aman dan inklusif di lingkungan sekolah?",
-      "Bagaimana langkah OSIS dapat menghidupkan kembali interaksi sosial antar siswa?",
-      "Bagaimana menciptakan budaya menghargai satu sama lain di sekolah?",
+      {
+        no: 1,
+        soal: "Salah satu pengurus OSIS sering terlambat dan memakai seragam tidak sesuai aturan sehingga siswa lain menirunya.",
+        pertanyaan:
+          "Apakah OSIS wajib menjadi panutan moral bagi siswa lain? Bagaimana cara mengembalikan citra OSIS di mata siswa maupun guru?",
+      },
+      {
+        no: 2,
+        soal: "OSIS menjalin kerja sama dengan komunitas luar untuk festival, tetapi sponsor meminta logo mereka diperbesar dan logo OSIS dihapus.",
+        pertanyaan: "Apakah hal ini mengancam independensi OSIS atau memperluas jejaring positif?",
+      },
+      {
+        no: 3,
+        soal: "Rapat OSIS rutin dan resmi tetapi keputusan penting sering tertunda sehingga program kerja terhambat.",
+        pertanyaan: "Apakah struktur formal menghambat efektivitas kerja?",
+      },
+      {
+        no: 4,
+        soal: "Pemilihan OSIS dimenangkan oleh kandidat populer di media sosial meskipun programnya tidak matang, setelah terpilih OSIS menjadi tidak aktif.",
+        pertanyaan: "Apakah pemilihan langsung menghasilkan pemimpin yang berkualitas?",
+      },
+      {
+        no: 5,
+        soal: "Kegiatan OSIS masih manual dan kurang memanfaatkan teknologi, sehingga dianggap tidak mengikuti perkembangan zaman.",
+        pertanyaan: "Bagaimana agar OSIS tetap relevan dan efektif di era digital?",
+      },
     ],
   },
   {
     id: "4",
     theme: "Sosial",
     questions: [
-      "Bagaimana OSIS mengelola dana kegiatan agar tidak ada pemborosan, tetapi kegiatan tetap berjalan?",
-      "Bagaimana kamu mempertanggungjawabkan keterlambatan proposal di depan siswa dan pembina OSIS?",
-      "Apakah administrasi harus menjadi tanggung jawab bersama atau tetap menjadi tugas bidang tertentu?",
-      "Bagaimana menentukan batas antara transparansi publik dan kerahasiaan organisasi agar OSIS tetap dipercaya namun tetap terkontrol?",
-      "Bagaimana memastikan kegiatan berikutnya lebih tertib secara administratif?",
+      {
+        no: 1,
+        soal: "Ada siswa yang dikucilkan karena latar belakang ekonomi.",
+        pertanyaan: "Bagaimana OSIS membangun rasa peduli dan menghargai perbedaan?",
+      },
+      {
+        no: 2,
+        soal: "Siswa merasa takut berbicara dengan guru, sementara guru merasa siswa kurang sopan.",
+        pertanyaan: "Bagaimana OSIS menjembatani komunikasi agar tetap harmonis?",
+      },
+      {
+        no: 3,
+        soal: "Bakti sosial hanya menjadi kegiatan formal yang berfokus pada dokumentasi.",
+        pertanyaan: "Bagaimana membuat kegiatan sosial lebih bermakna bagi masyarakat?",
+      },
+      {
+        no: 4,
+        soal: "Ada siswa yang mengalami bullying verbal dan fisik.",
+        pertanyaan: "Bagaimana OSIS menciptakan lingkungan sekolah yang aman dan inklusif?",
+      },
+      {
+        no: 5,
+        soal: "Saat istirahat siswa lebih fokus pada ponsel daripada berinteraksi.",
+        pertanyaan: "Bagaimana OSIS menghidupkan kembali interaksi sosial antar siswa?",
+      },
     ],
   },
   {
     id: "5",
     theme: "Administratif",
     questions: [
-      "Apakah kerja sama dengan pihak luar yang menonjolkan logo sponsor mengancam independensi OSIS atau justru memperluas jejaring positif?",
-      "Apa langkah konkret kalian untuk memperbaiki citra OSIS agar kembali dipercaya oleh siswa?",
-      "Apa langkah konkret kalian untuk membuka komunikasi dua arah antara OSIS dan siswa agar tidak ada jarak?",
-      "Bagaimana menyeimbangkan antara kepedulian sosial siswa dan tanggung jawab akademik yang harus dijaga?",
+      {
+        no: 1,
+        soal: "Pentas seni berjalan meriah tetapi dana melebihi anggaran karena pengeluaran tidak terkontrol.",
+        pertanyaan: "Bagaimana mengelola dana kegiatan agar tidak terjadi pemborosan tetapi kegiatan tetap berjalan?",
+      },
+      {
+        no: 2,
+        soal: "Dalam audit bulanan terdapat selisih Rp 200.000 antara catatan bendahara dan uang kas.",
+        pertanyaan: "Langkah pertama apa yang harus dilakukan?",
+      },
+      {
+        no: 3,
+        soal: "Setelah class meeting tidak ada salinan LPJ dan dokumentasi tidak rapi.",
+        pertanyaan: "Bagaimana memastikan kegiatan berikutnya lebih tertib administratif?",
+      },
+      {
+        no: 4,
+        soal: "OSIS dituduh tidak transparan karena laporan keuangan tidak pernah ditampilkan kepada ketua kelas.",
+        pertanyaan: "Bagaimana menjaga transparansi tanpa menimbulkan kesalahpahaman?",
+      },
+      {
+        no: 5,
+        soal: "Proposal kegiatan terlambat diserahkan sehingga izin ditolak meskipun persiapan sudah matang.",
+        pertanyaan: "Bagaimana mempertanggungjawabkan hal ini di depan siswa dan pembina?",
+      },
     ],
   },
-];
+]

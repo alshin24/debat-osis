@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import type { DebateSession } from "@/app/page"
+import type { DebateSession } from "@/app/data/debate-data"
 import CandidateDisplay from "@/components/candidate-display"
 import TimerDisplay from "@/components/timer-display"
 import { Button } from "@/components/ui/button"
@@ -43,9 +43,7 @@ export default function DebateDisplayPage({ session, onSessionEnd }: DebateDispl
       <div className="min-h-screen flex flex-col p-6 md:p-12">
         <div className="flex justify-between items-start mb-8">
           <div>
-            <h1 className="text-3xl items-center md:text-4xl font-bold text-foreground mb-2 text-balance">
-              {session.theme.theme}
-            </h1>
+            <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-2 text-balance">{session.theme.theme}</h1>
             <div className="flex items-center gap-2 mb-3">
               <Badge variant={isSessionComplete ? "secondary" : "default"}>
                 {isSessionComplete ? "Selesai" : "Sedang Berlangsung"}
@@ -55,7 +53,7 @@ export default function DebateDisplayPage({ session, onSessionEnd }: DebateDispl
           </div>
           <div className="flex items-center gap-4">
             <div className="text-right">
-              <p className="text-sm text-muted-foreground">Jumlah Paslon</p>
+              <p className="text-sm text-muted-foreground">Kandidat</p>
               <p className="text-2xl font-bold text-foreground">
                 {session.candidates.length}/{session.candidates.length}
               </p>
@@ -83,11 +81,9 @@ export default function DebateDisplayPage({ session, onSessionEnd }: DebateDispl
                   </svg>
                 </div>
               </div>
-              <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-2">
-                Sesi Debat Telah Selesai!
-              </h2>
+              <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-2">Sesi Debat Selesai!</h2>
               <p className="text-lg text-muted-foreground mb-6">
-                Semua {session.candidates.length} pasangan calon telah menyampaikan visi dan misi mereka.
+                Semua {session.candidates.length} kandidat telah menyampaikan pendapatnya.
               </p>
               <div className="mb-6 flex flex-wrap gap-2 justify-center">
                 {session.candidates.map((candidate) => (
@@ -104,19 +100,40 @@ export default function DebateDisplayPage({ session, onSessionEnd }: DebateDispl
           <div className="flex-1 flex flex-col items-center justify-center gap-8">
             {showCandidates && !showTimer && (
               <div className="w-full">
-                <div
-                  className={`grid gap-6 ${
-                    session.candidates.length === 1
-                      ? "grid-cols-1 place-items-center"
-                      : session.candidates.length === 2
-                        ? "grid-cols-2"
-                        : "grid-cols-3"
-                  } max-w-6xl mx-auto mb-8`}
-                >
-                  {session.candidates.map((candidate) => (
-                    <CandidateDisplay key={candidate.id} candidate={candidate} />
-                  ))}
+                <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-8 mb-8">
+                  <div className="flex flex-col items-center justify-center">
+                    <div className="grid gap-4">
+                      {session.candidates.map((candidate) => (
+                        <CandidateDisplay key={candidate.id} candidate={candidate} />
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="flex flex-col justify-center gap-6">
+                    <Card className="p-6  bg-muted/50 border-border">  
+                      <div className="space-y-4">
+                        <div>
+                          <p className="text-lg font-extrabold text-muted-foreground uppercase tracking-wide mb-2">
+                            Soal
+                          </p>
+                          <p className="text-3xl font-bold text-foreground leading-relaxed">
+                            {session.question.soal}
+                          </p>
+                        </div>
+                        <Separator />
+                        <div>
+                          <p className="text-lg font-extrabold text-muted-foreground uppercase tracking-wide mb-2">
+                            Pertanyaan
+                          </p>
+                          <p className="text-3xl font-bold text-foreground leading-relaxed">
+                            {session.question.pertanyaan}
+                          </p>
+                        </div>
+                      </div>
+                    </Card>
+                  </div>
                 </div>
+
                 <div className="flex justify-center">
                   <Button size="lg" onClick={handleStartTimer} className="px-8">
                     Mulai Waktu
@@ -124,13 +141,10 @@ export default function DebateDisplayPage({ session, onSessionEnd }: DebateDispl
                 </div>
               </div>
             )}
+
             {showTimer && (
               <div className="flex flex-col items-center gap-4 w-full">
-                <TimerDisplay
-                  duration={session.duration}
-                  onComplete={handleTimerComplete}
-                  onLowTime={handleLowTime}
-                />
+                <TimerDisplay duration={session.duration} onComplete={handleTimerComplete} onLowTime={handleLowTime} />
                 {isLowTime && (
                   <Alert variant="destructive" className="max-w-md">
                     <AlertDescription className="text-center font-semibold">
@@ -146,3 +160,4 @@ export default function DebateDisplayPage({ session, onSessionEnd }: DebateDispl
     </div>
   )
 }
+
