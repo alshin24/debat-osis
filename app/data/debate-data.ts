@@ -41,7 +41,7 @@ export const candidates: Candidate[] = [
     id: "3",
     name: "Novrika Awaliyah",
     role: "Ketua 02",
-    image: "/novrika.jpg",
+    image: "/novrika.png",
   },
   {
     id: "4",
