@@ -60,7 +60,7 @@ export default function TimerDisplay({ duration, onComplete, onLowTime }: TimerD
             cy="50"
             r="45"
             fill="none"
-            stroke={waktuHampirHabis ? "var(--destructive)" : "var(--primary)"}
+            stroke={waktuHampirHabis ? "var(--destructive)" : "var(--secondary)"}
             strokeWidth="8"
             strokeDasharray={`${2 * Math.PI * 45}`}
             strokeDashoffset={`${2 * Math.PI * 45 * (1 - persentase / 100)}`}
@@ -69,10 +69,10 @@ export default function TimerDisplay({ duration, onComplete, onLowTime }: TimerD
           />
         </svg>
 
-        <div className="text-center z-10">
+        <div className="text-center z-10 p-5">
           <div
             className={`text-7xl md:text-9xl font-bold font-mono tracking-wider ${
-              waktuHampirHabis ? "text-destructive" : "text-destructive"
+              waktuHampirHabis ? "text-destructive" : "text-secondary"
             }`}
           >
             {String(menit).padStart(2, "0")}:{String(detik).padStart(2, "0")}
